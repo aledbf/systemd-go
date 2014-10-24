@@ -25,7 +25,7 @@ func main() {
 		log.Fatal("invalid port")
 	}
 
-	if *timeout <= 0 {
+	if *timeout < 0 {
 		log.Fatal("invalid timeout")
 	}
 
