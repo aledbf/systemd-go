@@ -1,6 +1,3 @@
-systemd-go
-===============
-
 This is a work in progress. 
 ===============
 
