@@ -1,14 +1,17 @@
 systemd-go
 ===============
 
-This is a work in progress. NOT READY TO USE!!!!
+This is a work in progress. 
+===============
+
+NOT READY TO USE!!!!
 ===============
 
 
 
-Basically rewrite the current implementation in Go :)
+Basically rewrite the current shell scripts in Go :)
 
-This is just to improve the current output from the services
+This is just to improve the current output from the services and provide a way to customize the platform
 
 from:
 ```console
