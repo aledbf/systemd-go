@@ -2,11 +2,12 @@ package preStart
 
 import (
 	"flag"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"regexp"
 	"strings"
+
+	log "github.com/Sirupsen/logrus"
 )
 
 //  ExecStartPre=/bin/sh -c "IMAGE=`/run/deis/bin/get_image /deis/builder` && docker history $IMAGE >/dev/null || docker pull $IMAGE"
@@ -32,7 +33,7 @@ func main() {
 }
 
 func checkRunningContainer(containerName string) bool {
-	debug("checking if there is a container with name %s is running", containerName)
+	log.Debugf("checking if there is a container with name %s is running", containerName)
 	cmd := exec.Command("docker", "inspect", containerName)
 	if err := cmd.Run(); err != nil {
 		return false
@@ -42,7 +43,7 @@ func checkRunningContainer(containerName string) bool {
 }
 
 func startDataContainer(containerName string) bool {
-	debug("launching data container name %s", containerName)
+	log.Debugf("launching data container name %s", containerName)
 	cmd := exec.Command("docker", "run", "--name", containerName, "-v", "/var/lib/docker", "ubuntu-debootstrap:14.04", "/bin/true")
 	if err := cmd.Run(); err != nil {
 		return false

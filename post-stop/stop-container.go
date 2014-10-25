@@ -3,7 +3,8 @@ package postStop
 import (
 	"flag"
 	"fmt"
-	"log"
+
+	log "github.com/Sirupsen/logrus"
 )
 
 //  ExecStopPost=-/usr/bin/docker rm -f deis-builder

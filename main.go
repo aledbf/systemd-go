@@ -1,31 +1,27 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"os"
-	"os/exec"
 	"os/signal"
 	"syscall"
 
+	log "github.com/Sirupsen/logrus"
 	"github.com/coreos/go-etcd/etcd"
-	"github.com/deis/deis/systemd/commons"
-	. "github.com/visionmedia/go-debug"
+	"github.com/deis/systemd/commons"
 )
 
 const (
 	useNodeNames = "/deis/platform/useNodeNames"
 )
 
-var debug = Debug("systemd:start")
-
 func main() {
-	debug("starting service")
+	log.Debugf("starting service")
 
 	host := commons.Getopt("COREOS_PRIVATE_IPV4", "127.0.0.1")
 	etcdPort := commons.Getopt("ETCD_PORT", "4001")
 
 	client := etcd.NewClient([]string{"http://" + host + ":" + etcdPort})
+	client.SetConsistency(etcd.STRONG_CONSISTENCY)
 
 	// Wait for terminating signal
 	exitChan := make(chan os.Signal, 2)

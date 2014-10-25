@@ -1,10 +1,11 @@
 package commons
 
 import (
-	"log"
 	"os"
 	"os/exec"
 	"time"
+
+	log "github.com/Sirupsen/logrus"
 )
 
 func WaitForInitialConfd(etcd string, timeout time.Duration) {
@@ -27,6 +28,6 @@ func LaunchConfd(etcd string) {
 	cmd.Stderr = os.Stderr
 
 	if err := cmd.Start(); err != nil {
-		log.Printf("confd terminated by error: %v", err)
+		log.Fatal("confd terminated by error: %v", err)
 	}
 }

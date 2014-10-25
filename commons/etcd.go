@@ -1,15 +1,11 @@
 package commons
 
 import (
-	"fmt"
-	"log"
 	"time"
 
+	log "github.com/Sirupsen/logrus"
 	"github.com/coreos/go-etcd/etcd"
-	. "github.com/visionmedia/go-debug"
 )
-
-var debug = Debug("systemd:commons")
 
 // Connect to etcd using environment variables
 // COREOS_PRIVATE_IPV4
@@ -18,21 +14,21 @@ func ConnectToEtcd() *etcd.Client {
 	host := Getopt("COREOS_PRIVATE_IPV4", "127.0.0.1")
 	etcdPort := Getopt("ETCD_PORT", "4001")
 	etcdUrl := "http://" + host + ":" + etcdPort
-	debug("connecting to etcd in URL: %s", etcdUrl)
+	log.Info("connecting to etcd in URL: %s", etcdUrl)
 	return etcd.NewClient([]string{etcdUrl})
 }
 
 func SetDefaultEtcd(client *etcd.Client, key, value string) {
 	_, err := client.Set(key, value, 0)
 	if err != nil {
-		log.Println(err)
+		log.Warn(err)
 	}
 }
 
 func MkdirEtcd(client *etcd.Client, path string) {
 	_, err := client.CreateDir(path, 0)
 	if err != nil {
-		log.Println(err)
+		log.Warn(err)
 	}
 }
 
@@ -44,7 +40,7 @@ func WaitForEtcdKeys(client *etcd.Client, keys []string) {
 		for _, key := range keys {
 			_, err := client.Get(key, false, false)
 			if err != nil {
-				debug("key \"%s\" error %v", key, err)
+				log.Debugf("key \"%s\" error %v", key, err)
 				wait = true
 			}
 		}
@@ -53,7 +49,7 @@ func WaitForEtcdKeys(client *etcd.Client, keys []string) {
 			break
 		}
 
-		fmt.Println("waiting for missing etcd keys...")
+		log.Println("waiting for missing etcd keys...")
 		time.Sleep(1 * time.Second)
 		wait = false
 	}
@@ -82,7 +78,7 @@ func GetListEtcd(client *etcd.Client, key string) etcd.Nodes {
 func SetEtcd(client *etcd.Client, key, value string, ttl uint64) {
 	_, err := client.Set(key, value, ttl)
 	if err != nil {
-		debug("%v", err)
+		log.Debugf("%v", err)
 	}
 }
 

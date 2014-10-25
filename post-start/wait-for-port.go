@@ -36,7 +36,7 @@ func main() {
 
 	for {
 		if len(*text) > 0 {
-			fmt.Println(text)
+			log.Info(text)
 		}
 
 		if _, err := net.DialTimeout("tcp", "127.0.0.1:"+string(*port), 1); err == nil {
@@ -47,7 +47,7 @@ func main() {
 		if *timeout > 0 {
 			elapsed := time.Since(startTime)
 			if elapsed.Seconds() > timeoutInSeconds {
-				fmt.Fprintf(os.Stderr, "timeout reached. aborting...")
+				log.Warn(os.Stderr, "timeout reached. aborting...")
 				os.Exit(1)
 			}
 		}
