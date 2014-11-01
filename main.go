@@ -5,9 +5,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	log "github.com/Sirupsen/logrus"
 	"github.com/coreos/go-etcd/etcd"
 	"github.com/deis/systemd/commons"
+	"github.com/deis/systemd/logger"
 )
 
 const (
@@ -15,7 +15,7 @@ const (
 )
 
 func main() {
-	log.Debugf("starting service")
+	logger.Log.Debugf("starting service")
 
 	host := commons.Getopt("COREOS_PRIVATE_IPV4", "127.0.0.1")
 	etcdPort := commons.Getopt("ETCD_PORT", "4001")

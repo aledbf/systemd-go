@@ -5,7 +5,7 @@ import (
 	"os/exec"
 	"time"
 
-	log "github.com/Sirupsen/logrus"
+	"github.com/deis/systemd/logger"
 )
 
 func WaitForInitialConfd(etcd string, timeout time.Duration) {
@@ -28,6 +28,6 @@ func LaunchConfd(etcd string) {
 	cmd.Stderr = os.Stderr
 
 	if err := cmd.Start(); err != nil {
-		log.Fatal("confd terminated by error: %v", err)
+		logger.Log.Fatal("confd terminated by error: %v", err)
 	}
 }

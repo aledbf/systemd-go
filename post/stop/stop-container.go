@@ -4,8 +4,8 @@ import (
 	"flag"
 	"os"
 
-	log "github.com/Sirupsen/logrus"
 	"github.com/deis/systemd/commons"
+	"github.com/deis/systemd/logger"
 )
 
 //  ExecStopPost=-/usr/bin/docker rm -f deis-builder
@@ -19,7 +19,7 @@ func main() {
 	}
 
 	if *name == "" {
-		log.Fatal("invalid service name")
+		logger.Log.Fatal("invalid service name")
 	}
 
 	if err := commons.StopContainer(*name); err != nil {

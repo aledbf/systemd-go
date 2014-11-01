@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	log "github.com/Sirupsen/logrus"
+	"github.com/deis/systemd/logger"
 )
 
 func main() {
@@ -24,14 +24,14 @@ func main() {
 	}
 
 	if *name == "" {
-		log.Fatal("invalid image name")
+		logger.Log.Fatal("invalid image name")
 	}
 
 	os.Exit(0)
 }
 
 func checkRunningContainer(containerName string) bool {
-	log.Debugf("checking if there is a container with name %s is running", containerName)
+	logger.Log.Debugf("checking if there is a container with name %s is running", containerName)
 	cmd := exec.Command("docker", "inspect", containerName)
 	if err := cmd.Run(); err != nil {
 		return false
@@ -41,7 +41,7 @@ func checkRunningContainer(containerName string) bool {
 }
 
 func startDataContainer(containerName string) bool {
-	log.Debugf("launching data container name %s", containerName)
+	logger.Log.Debugf("launching data container name %s", containerName)
 	cmd := exec.Command("docker", "run", "--name", containerName, "-v", "/var/lib/docker", "ubuntu-debootstrap:14.04", "/bin/true")
 	if err := cmd.Run(); err != nil {
 		return false

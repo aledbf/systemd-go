@@ -22,11 +22,11 @@ func main() {
 	}
 
 	if *port == 0 {
-		log.Fatal("invalid port")
+		logger.Log.Fatal("invalid port")
 	}
 
 	if *timeout < 0 {
-		log.Fatal("invalid timeout")
+		logger.Log.Fatal("invalid timeout")
 	}
 
 	timeoutInSeconds := (time.Duration(*timeout) * time.Second).Seconds()
@@ -36,7 +36,7 @@ func main() {
 
 	for {
 		if len(*text) > 0 {
-			log.Info(text)
+			logger.Log.Info(text)
 		}
 
 		if _, err := net.DialTimeout("tcp", "127.0.0.1:"+string(*port), 1); err == nil {
@@ -47,7 +47,7 @@ func main() {
 		if *timeout > 0 {
 			elapsed := time.Since(startTime)
 			if elapsed.Seconds() > timeoutInSeconds {
-				log.Warn(os.Stderr, "timeout reached. aborting...")
+				logger.Log.Warn(os.Stderr, "timeout reached. aborting...")
 				os.Exit(1)
 			}
 		}

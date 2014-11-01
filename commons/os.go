@@ -4,13 +4,13 @@ import (
 	"io"
 	"os"
 
-	log "github.com/Sirupsen/logrus"
+	"github.com/deis/systemd/logger"
 )
 
 func Getopt(name, dfault string) string {
 	value := os.Getenv(name)
 	if value == "" {
-		log.Debugf("returning default value \"%s\" for key \"%s\"", dfault, name)
+		logger.Log.Debugf("returning default value \"%s\" for key \"%s\"", dfault, name)
 		value = dfault
 	}
 	return value
