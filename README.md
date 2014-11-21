@@ -96,4 +96,5 @@ doing this is possible to do other things:
 - [ ] stop-container
 - [x] wait-for-port
 - [ ] start-component
-
+- [ ] read /deis/platform/useNodeNames
+- [ ] **tests**
