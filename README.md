@@ -87,10 +87,13 @@ doing this is possible to do other things:
 
   Use the real node hostname inside the container (and not a generated one)
 
-TODO:
-- [] check-image
-- [] launch-data-container
-- [] remove-running-container
-- [] stop-container
-- [X] wait-for-port
-- [] start-component
+
+### TODO:
+
+- [ ] check-image
+- [ ] launch-data-container
+- [ ] remove-running-container
+- [ ] stop-container
+- [x] wait-for-port
+- [ ] start-component
+
