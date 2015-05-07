@@ -1,21 +1,74 @@
 {
-	"ImportPath": "github.com/deis/systemd",
-	"GoVersion": "go1.3.1",
+	"ImportPath": "github.com/aledbf/systemd-go",
+	"GoVersion": "go1.4.1",
+	"Packages": [
+		"./..."
+	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/Sirupsen/logrus",
-			"Comment": "v0.5.1-35-g2e36101",
-			"Rev": "2e36101a197f56f60ca6c37c3c256ed3713a9649"
+			"Comment": "v0.7.3-4-gaaf92c9",
+			"Rev": "aaf92c95712104318fc35409745f1533aa5ff327"
 		},
 		{
 			"ImportPath": "github.com/coreos/go-etcd/etcd",
-			"Comment": "v0.2.0-rc1-127-g6fe04d5",
-			"Rev": "6fe04d580dfb71c9e34cbce2f4df9eefd1e1241e"
+			"Comment": "v2.0.0-7-g73a8ef7",
+			"Rev": "73a8ef737e8ea002281a28b4cb92a1de121ad4c6"
+		},
+		{
+			"ImportPath": "github.com/docker/docker/pkg/archive",
+			"Comment": "v1.4.1-3259-g1e65651",
+			"Rev": "1e6565188d9fa6f13aa11b7f76e60c23fcf0082b"
+		},
+		{
+			"ImportPath": "github.com/docker/docker/pkg/fileutils",
+			"Comment": "v1.4.1-3259-g1e65651",
+			"Rev": "1e6565188d9fa6f13aa11b7f76e60c23fcf0082b"
+		},
+		{
+			"ImportPath": "github.com/docker/docker/pkg/ioutils",
+			"Comment": "v1.4.1-3259-g1e65651",
+			"Rev": "1e6565188d9fa6f13aa11b7f76e60c23fcf0082b"
+		},
+		{
+			"ImportPath": "github.com/docker/docker/pkg/pools",
+			"Comment": "v1.4.1-3259-g1e65651",
+			"Rev": "1e6565188d9fa6f13aa11b7f76e60c23fcf0082b"
+		},
+		{
+			"ImportPath": "github.com/docker/docker/pkg/promise",
+			"Comment": "v1.4.1-3259-g1e65651",
+			"Rev": "1e6565188d9fa6f13aa11b7f76e60c23fcf0082b"
+		},
+		{
+			"ImportPath": "github.com/docker/docker/pkg/system",
+			"Comment": "v1.4.1-3259-g1e65651",
+			"Rev": "1e6565188d9fa6f13aa11b7f76e60c23fcf0082b"
 		},
 		{
 			"ImportPath": "github.com/fsouza/go-dockerclient",
-			"Comment": "0.2.1-274-g4b6c75c",
-			"Rev": "4b6c75c1d58fbbbaae680348f56fd61b35d2f3ee"
+			"Rev": "0ba7f0a32981ca4c1043c245017eb099708695ef"
+		},
+		{
+			"ImportPath": "github.com/kardianos/osext",
+			"Rev": "ccfcd0245381f0c94c68f50626665eed3c6b726a"
+		},
+		{
+			"ImportPath": "github.com/pmylund/go-cache",
+			"Rev": "93d85800f2fa6bd0a739e7bd612bfa3bc008b72d"
+		},
+		{
+			"ImportPath": "github.com/progrium/go-basher",
+			"Rev": "ca3b97b3bd2a7eda303716f56916684771b79942"
+		},
+		{
+			"ImportPath": "github.com/robfig/cron",
+			"Comment": "v1-2-g67823cd",
+			"Rev": "67823cd24dece1b04cced3a0a0b3ca2bc84d875e"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/assert",
+			"Rev": "5ab65693f48b284b3f7a83114dd7b166b45f0193"
 		}
 	]
 }
